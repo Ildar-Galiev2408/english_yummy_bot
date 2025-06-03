@@ -1,0 +1,13 @@
+app = "yummy-bot"
+primary_region = "arn"
+
+[build]
+  copy = ["bot.py", "images/", "audio/", "requirements.txt"]
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[experimental]
+  auto_rollback = true
