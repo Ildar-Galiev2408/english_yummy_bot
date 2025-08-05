@@ -360,3 +360,25 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+
+from flask import Flask
+import threading
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "Bot is alive!"
+
+# Main async bot logic
+async def main():
+    await dp.start_polling(bot)
+
+# Start Flask in separate thread
+def run_flask():
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
+if __name__ == "__main__":
+    threading.Thread(target=run_flask).start()
+    asyncio.run(main())
