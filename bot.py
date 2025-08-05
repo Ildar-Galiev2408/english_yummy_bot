@@ -18,7 +18,7 @@ for file in os.listdir("images"):
 
 nest_asyncio.apply()
 
-API_TOKEN = "key"
+API_TOKEN = os.getenv("API_TOKEN")
 
 bot = Bot(token=API_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher(storage=MemoryStorage())
